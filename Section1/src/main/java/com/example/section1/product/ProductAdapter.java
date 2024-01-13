@@ -15,4 +15,11 @@ class ProductAdapter implements ProductPort {
     public void save(final Product product) {
         productRepository.save(product);
     }
+
+    @Override
+    public Product getProduct(final Long productId){
+        // 상품을 조회하고 없으면 throw를 던짐
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다"));
+    }
 }
