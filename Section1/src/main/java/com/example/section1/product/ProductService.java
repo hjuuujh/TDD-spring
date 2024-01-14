@@ -16,7 +16,7 @@ class ProductService {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Void> addProduct(@RequestBody final AddProdcutRequest request) {
+    public ResponseEntity<Void> addProduct(@RequestBody final AddProductRequest request) {
         final Product product = new Product(request.name(), request.price(), request.discountPolicy());
 
         productPort.save(product);
@@ -30,5 +30,15 @@ class ProductService {
 
         final GetProductResponse response = new GetProductResponse(product.getId(), product.getName(), product.getPrice(), product.getDiscountPolicy( ));
         return ResponseEntity.ok(response);
+    }
+
+    public void updateProduct(final Long productId, final UpdateProductRequest request) {
+        final Product product = productPort.getProduct(productId);
+        // update로 수정하는 정보 넘겨줌
+        product.update(request.name(), request.price(), request.discountPolicy());
+
+        productPort.save(product);
+
+
     }
 }
