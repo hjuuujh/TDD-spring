@@ -1,5 +1,6 @@
 package com.example.section1.product;
 
+import com.example.section1.payment.PaymentRequest;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
