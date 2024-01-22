@@ -1,4 +1,4 @@
-package com.example.section1.product;
+package com.example.section1.product.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
